@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { MapPin, Phone, Mail, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
-
+import Logo from "../lovable-uploads/GenFooterLogo.png";
 const Footer = () => {
   const quickLinks = [
     'About Us',
@@ -30,7 +30,7 @@ const Footer = () => {
             <div>
               <div className="flex items-left h-full ">
                 <img
-                  src="/lovable-uploads/GenFooterLogo.png"
+                  src={Logo}
                   alt="GENWARE TECHNOLOGIES"
                   className="h-20 w-auto object-contain -mt-2"
                 />
