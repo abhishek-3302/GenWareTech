@@ -69,9 +69,10 @@ const Services = () => {
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
+              <div id={`service-${index}`} key={index}>
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
                 <CardHeader className="pb-4">
-                  <div className="bg-primary/10 rounded-lg p-4 w-16 h-16 mb-4 group-hover:bg-primary/20 transition-colors">
+                  <div className="bg-primary/10 rounded-lg p-4 w-16 h-16 mb-4 group-hover:bg-tealCustom transition-colors">
                     <IconComponent className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors">
@@ -96,6 +97,7 @@ const Services = () => {
                   </Button>
                 </CardContent>
               </Card>
+              </div>
             );
           })}
         </div>

@@ -16,19 +16,23 @@ const Hero = () => {
                 for Modern Business
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed">
-                GENWARE TECHNOLOGIES delivers comprehensive IT infrastructure solutions, 
+                GENWARE TECHNOLOGIES delivers comprehensive IT infrastructure solutions,
                 from hardware supply to advanced printing systems and reliable power backup solutions.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-4">
-                Explore Services
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-4">
-                Contact Us
-              </Button>
+              <a href="#services">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-4">
+                  Explore Services
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </a>
+              <a href="#contact">
+                <Button variant="outline" size="lg" className="text-lg px-8 py-4">
+                  Contact Us
+                </Button>
+              </a>
             </div>
 
             <div className="grid grid-cols-3 gap-8 pt-8">
@@ -85,9 +89,11 @@ const Hero = () => {
                     24/7 Technical Support
                   </div>
                 </div>
-                <Button className="w-full bg-primary hover:bg-primary/90">
-                  Schedule Free Consultation
-                </Button>
+                <a href="#contact">
+                  <Button className="w-full bg-primary hover:bg-primary/90">
+                    Schedule Free Consultation
+                  </Button>
+                </a>
               </div>
             </div>
           </div>

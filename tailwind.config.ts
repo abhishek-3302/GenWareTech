@@ -19,6 +19,7 @@ export default {
 		},
 		extend: {
 			colors: {
+				tealCustom: 'rgb(17, 189, 189)',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

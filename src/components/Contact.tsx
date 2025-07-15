@@ -33,17 +33,17 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Visit Our Office",
-      details: ["123 Technology Park", "IT District, Business City", "State - 123456"]
+      details: ["Mission Road", "Golaghat", "Assam - 785621"]
     },
     {
       icon: Phone,
       title: "Call Us",
-      details: ["+91 XXXX-XXXXXX", "+91 XXXX-XXXXXX", "Toll Free: 1800-XXX-XXXX"]
+      details: ["+91 7892649170"]
     },
     {
       icon: Mail,
       title: "Email Us",
-      details: ["info@genwaretechnologies.com", "sales@genwaretechnologies.com", "support@genwaretechnologies.com"]
+      details: ["genwaretechnologies@gmail.com"]
     },
     // {
     //   icon: Clock,

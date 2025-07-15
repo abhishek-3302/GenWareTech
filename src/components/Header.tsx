@@ -41,9 +41,9 @@ const Header = () => {
       <div className="container mx-auto px-4 h-[90px] relative">
         <div className="flex justify-between items-center h-full">
           <div className="flex items-center h-full">
-            <img 
-              src={Logo} 
-              alt="GENWARE TECHNOLOGIES" 
+            <img
+              src={Logo}
+              alt="GENWARE TECHNOLOGIES"
               className="h-12 md:h-full w-auto object-contain"
             />
           </div>
@@ -59,9 +59,11 @@ const Header = () => {
                 {item.name}
               </a>
             ))}
-            <Button className="bg-primary hover:bg-primary/90">
-              Get Quote
-            </Button>
+            <a href="#contact">
+              <Button className="bg-primary hover:bg-primary/90">
+                Get Quote
+              </Button>
+            </a>
           </nav>
 
           {/* Mobile Menu Button */}

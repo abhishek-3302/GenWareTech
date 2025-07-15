@@ -42,16 +42,16 @@ const Footer = () => {
             </div>
 
             <div className="flex space-x-4">
-              <a href="#" className="bg-gray-800 p-2 rounded-lg hover:bg-primary transition-colors">
+              <a href="#" className="bg-gray-800 p-2 rounded-lg hover:text-tealCustom transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="bg-gray-800 p-2 rounded-lg hover:bg-primary transition-colors">
+              <a href="#" className="bg-gray-800 p-2 rounded-lg hover:text-tealCustom transition-colors">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="bg-gray-800 p-2 rounded-lg hover:bg-primary transition-colors">
+              <a href="#" className="bg-gray-800 p-2 rounded-lg hover:text-tealCustom transition-colors">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="bg-gray-800 p-2 rounded-lg hover:bg-primary transition-colors">
+              <a href="#" className="bg-gray-800 p-2 rounded-lg hover:text-tealCustom transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
             </div>
@@ -63,7 +63,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a href="#" className="text-gray-300 hover:text-primary transition-colors">
+                  <a href="#" className="text-gray-300 hover:text-tealCustom transition-colors">
                     {link}
                   </a>
                 </li>
@@ -76,8 +76,8 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-6">Our Services</h4>
             <ul className="space-y-3">
               {services.map((service, index) => (
-                <li key={index}>
-                  <a href="#" className="text-gray-300 hover:text-primary transition-colors">
+                <li key={`#service-${index}`}>
+                  <a href="#" className="text-gray-300 hover:text-tealCustom transition-colors">
                     {service}
                   </a>
                 </li>
@@ -89,7 +89,7 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-6">Contact Information</h4>
             <div className="space-y-4">
-              <div className="flex items-start gap-3">
+              <div className="flex items-start">
                 <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                 <div className="text-gray-300">
                   <p>Mission Road</p>
@@ -98,12 +98,12 @@ const Footer = () => {
                 </div>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-start">
                 <Phone className="h-5 w-5 text-primary" />
                 <span className="text-gray-300">+91 7892-649170</span>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-start">
                 <Mail className="h-5 w-5 text-primary" />
                 <span className="text-gray-300">genwaretechnologies@gmail.com</span>
               </div>
@@ -120,9 +120,9 @@ const Footer = () => {
               © 2024 GENWARE TECHNOLOGIES. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm text-gray-300">
-              <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-primary transition-colors">Cookie Policy</a>
+              <a href="#" className="hover:text-tealCustom transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-tealCustom transition-colors">Terms of Service</a>
+              <a href="#" className="hover:text-tealCustom transition-colors">Cookie Policy</a>
             </div>
           </div>
         </div>
