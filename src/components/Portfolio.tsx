@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   LayoutDashboard,
@@ -19,12 +19,20 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import logunDentalImage from '@/lovable-uploads/logundental.png';
+import nehcImage from '@/lovable-uploads/nehc.png';
+import sanjibaniImage from '@/lovable-uploads/sanjibani.png';
 
 const Portfolio = () => {
+  const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
+
+  const handleImageError = (id: number) => {
+    setImageErrors(prev => ({ ...prev, [id]: true }));
+  };
   const caseStudies = [
     {
       id: 1,
-      client: 'SmileCare Dental Clinic',
+      client: 'Loguns Dental',
       industry: 'Healthcare',
       icon: Stethoscope,
       color: 'from-teal-500 to-cyan-400',
@@ -32,13 +40,13 @@ const Portfolio = () => {
       solution: 'Designed and developed a premium clinic website with service showcases, appointment booking integration, and mobile-first responsive design.',
       features: ['Online Appointment System', 'Service Catalog', 'Mobile Optimization', 'SEO Optimization', 'Patient Portal Integration'],
       techStack: ['React', 'Tailwind CSS', 'Node.js', 'MongoDB'],
-      image: '/portfolio/dental-clinic.jpg',
+      image: logunDentalImage,
       status: 'Live',
       impact: '40% increase in online appointments within 3 months'
     },
     {
       id: 2,
-      client: 'MedEquip Solutions',
+      client: 'NorthEastern HealthCare Company',
       industry: 'Medical Equipment',
       icon: Database,
       color: 'from-emerald-300 to-teal-400',
@@ -46,13 +54,13 @@ const Portfolio = () => {
       solution: 'Built a comprehensive B2B web presence with an advanced product catalog, inquiry form system, and company profile showcasing 500+ products.',
       features: ['Product Catalog (500+ items)', 'Bulk Inquiry System', 'Quote Request Flow', 'Admin Dashboard', 'PDF Catalog Downloads'],
       techStack: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS'],
-      image: '/portfolio/medical-equipment.jpg',
+      image: nehcImage,
       status: 'Live',
       impact: '3x increase in qualified B2B inquiries'
     },
     {
       id: 3,
-      client: 'Asom Unnati NGO',
+      client: 'Sanjibani NGO',
       industry: 'Non-Profit',
       icon: HeartHandshake,
       color: 'from-green-500 to-emerald-500',
@@ -60,7 +68,7 @@ const Portfolio = () => {
       solution: 'Created an emotionally engaging NGO website with mission storytelling, project gallery, donation integration, and volunteer management system.',
       features: ['Donation Integration', 'Project Showcase', 'Impact Dashboard', 'Volunteer Registration', 'Event Management'],
       techStack: ['React', 'Firebase', 'GSAP Animations', 'Razorpay'],
-      image: '/portfolio/ngo-website.jpg',
+      image: sanjibaniImage,
       status: 'Live',
       impact: '150% increase in monthly donations'
     }
@@ -153,29 +161,38 @@ const Portfolio = () => {
               <div className={`${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
                 <div className="relative group">
                   <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-100 bg-gradient-to-br from-gray-50 to-gray-100 aspect-[4/3]">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center p-8 w-full">
-                        <svg viewBox="0 0 400 300" className="w-full max-w-md mx-auto rounded-xl" xmlns="http://www.w3.org/2000/svg">
-                          <defs>
-                            <linearGradient id={`grad-${study.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                              <stop offset="0%" stopColor={study.color.includes('teal') ? '#14b8a6' : study.color.includes('emerald') ? '#34d399' : '#4ade80'} />
-                              <stop offset="100%" stopColor={study.color.includes('teal') ? '#0d9488' : study.color.includes('emerald') ? '#10b981' : '#16a34a'} />
-                            </linearGradient>
-                          </defs>
-                          <rect width="400" height="300" rx="12" fill={`url(#grad-${study.id})`} />
-                          <rect x="24" y="24" width="352" height="48" rx="8" fill="white" fillOpacity="0.2" />
-                          <rect x="24" y="88" width="120" height="180" rx="8" fill="white" fillOpacity="0.15" />
-                          <rect x="160" y="88" width="216" height="80" rx="8" fill="white" fillOpacity="0.1" />
-                          <rect x="160" y="184" width="216" height="84" rx="8" fill="white" fillOpacity="0.1" />
-                          <circle cx="84" cy="128" r="20" fill="white" fillOpacity="0.3" />
-                          <circle cx="84" cy="178" r="8" fill="white" fillOpacity="0.2" />
-                          <circle cx="84" cy="200" r="8" fill="white" fillOpacity="0.2" />
-                        </svg>
-                        <p className="text-gray-500 text-sm font-medium mt-3">{study.client} Website</p>
-                        <p className="text-gray-400 text-xs mt-1">Portfolio preview — {study.status}</p>
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-100 bg-white">
+                    {!imageErrors[study.id] ? (
+                      <img
+                        src={study.image}
+                        alt={`${study.client} portfolio preview`}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        onError={() => handleImageError(study.id)}
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="text-center p-8 w-full">
+                          <svg viewBox="0 0 400 300" className="w-full max-w-md mx-auto rounded-xl" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                              <linearGradient id={`grad-${study.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stopColor={study.color.includes('teal') ? '#14b8a6' : study.color.includes('emerald') ? '#34d399' : '#4ade80'} />
+                                <stop offset="100%" stopColor={study.color.includes('teal') ? '#0d9488' : study.color.includes('emerald') ? '#10b981' : '#16a34a'} />
+                              </linearGradient>
+                            </defs>
+                            <rect width="400" height="300" rx="12" fill={`url(#grad-${study.id})`} />
+                            <rect x="24" y="24" width="352" height="48" rx="8" fill="white" fillOpacity="0.2" />
+                            <rect x="24" y="88" width="120" height="180" rx="8" fill="white" fillOpacity="0.15" />
+                            <rect x="160" y="88" width="216" height="80" rx="8" fill="white" fillOpacity="0.1" />
+                            <rect x="160" y="184" width="216" height="84" rx="8" fill="white" fillOpacity="0.1" />
+                            <circle cx="84" cy="128" r="20" fill="white" fillOpacity="0.3" />
+                            <circle cx="84" cy="178" r="8" fill="white" fillOpacity="0.2" />
+                            <circle cx="84" cy="200" r="8" fill="white" fillOpacity="0.2" />
+                          </svg>
+                          <p className="text-gray-500 text-sm font-medium mt-3">{study.client} Website</p>
+                          <p className="text-gray-400 text-xs mt-1">Portfolio preview — {study.status}</p>
+                        </div>
                       </div>
-                    </div>
+                    )}
                     <div className="absolute bottom-4 right-4">
                       <div className="px-3 py-1.5 rounded-lg bg-green-100 text-green-700 text-xs font-semibold flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />

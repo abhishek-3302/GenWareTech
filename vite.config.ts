@@ -8,6 +8,13 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    proxy: {
+      "/api/send-consultation": {
+        target: process.env.VITE_FUNCTIONS_EMULATOR_URL || "http://127.0.0.1:5001",
+        changeOrigin: true,
+        rewrite: () => "/genwaretech/us-central1/sendConsultationEmail"
+      }
+    }
   },
   plugins: [
     react(),

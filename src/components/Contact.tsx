@@ -21,10 +21,27 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    toast.success('Thank you! We\'ll contact you within 24 hours to schedule your free consultation.');
-    setFormData({ name: '', email: '', phone: '', company: '', serviceInterest: '', message: '' });
-    setIsSubmitting(false);
+
+    try {
+      const response = await fetch(import.meta.env.VITE_CONSULTATION_API_URL || "/api/send-consultation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send consultation request");
+      }
+
+      toast.success("Thank you! We'll contact you within 24 hours to schedule your free consultation.");
+      setFormData({ name: '', email: '', phone: '', company: '', serviceInterest: '', message: '' });
+    } catch {
+      toast.error("Unable to send right now. Please call or WhatsApp us.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {

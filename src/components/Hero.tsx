@@ -44,7 +44,7 @@ const Hero = () => {
             </motion.div>
 
             <div className="space-y-2">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.1] tracking-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.1] tracking-tight break-words">
                 Transforming Businesses Through{' '}
                 <span className="relative inline-block">
                   <span className="relative z-10 text-gradient">Intelligent</span>
